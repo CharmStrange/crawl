@@ -692,6 +692,7 @@ void pack_doll_buf(SubmergedTileBuffer& buf, const dolls_data &doll,
             draw_info_count = entry->info(&dinfo[0]);
         }
     }
+
     // A higher index here means that the part should be drawn on top.
     // This is drawn in reverse order because this could be a ghost
     // or being drawn in water, in which case we want the top-most part
@@ -717,6 +718,9 @@ void pack_doll_buf(SubmergedTileBuffer& buf, const dolls_data &doll,
             ofs_y = dinfo[draw_info_count - dind - 1].ofs_y;
             ++dind;
         }
+        else if (p == TILEP_PART_HAND2 && you.offhand_weapon())
+            ofs_x = 19;
+
         const int ymax = flags[p] == TILEP_FLAG_CUT_BOTTOM ? 18 : TILE_Y;
         buf.add(doll.parts[p], x, y, i, submerged, ghost, ofs_x, ofs_y, ymax);
     }

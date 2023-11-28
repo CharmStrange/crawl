@@ -571,6 +571,14 @@ in touch with death mutation
 Your Necromancy spells are more powerful. The second level of this mutation
 enhances your Necromancy spellpower further.
 %%%%
+off-hand wielding
+
+You can wield a one-handed weapon in your off-hand, if not wielding a
+two-handed weapon or wearing a shield or orb. You will automatically follow up
+attacks from your primary weapon with your off-hand weapon, with attack delay
+determined by the slower of the two. Ranged weapons can only follow attacks by
+ranged weapons, and likewise melee weapons.
+%%%%
 acrobatic mutation
 
 Your magical nature helps you tumble your hollow bones around acrobatically,

@@ -269,6 +269,9 @@ tileidx_t tilep_equ_weapon(const item_def &item)
 
 tileidx_t tilep_equ_shield(const item_def &item)
 {
+    if (is_weapon(item) && you.has_mutation(MUT_WIELD_OFFHAND))
+        return tilep_equ_weapon(item);
+
     if (item.base_type != OBJ_ARMOUR)
         return 0;
 
@@ -610,6 +613,7 @@ tileidx_t tilep_species_to_base_tile(int sp, int level)
     switch (sp)
     {
     case SP_HUMAN:
+    case SP_AUGMENT: // XXX TODO
         return TILEP_BASE_HUMAN;
 #if TAG_MAJOR_VERSION == 34
     case SP_HIGH_ELF:

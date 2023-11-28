@@ -221,7 +221,7 @@ static int _default_osel(operation_types oper)
     case OPER_WIELD:
         return OSEL_WIELD; // XX is this different from OBJ_WEAPONS any more?
     case OPER_WEAR:
-        return OBJ_ARMOUR;
+        return OSEL_WEARABLE;
     case OPER_PUTON:
         return OBJ_JEWELLERY;
     case OPER_QUAFF:
@@ -1706,8 +1706,16 @@ static string _cant_wear_barding_reason(bool ignore_temporary)
  */
 bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
 {
-    const object_class_type base_type = item.base_type;
-    if (base_type != OBJ_ARMOUR || you.has_mutation(MUT_NO_ARMOUR))
+
+    if (you.has_mutation(MUT_WIELD_OFFHAND)
+        && !you.has_mutation(MUT_MISSING_HAND)
+        && is_weapon(item)
+        && you.hands_reqd(item) == HANDS_ONE)
+    {
+        return true;
+    }
+
+    if (item.base_type != OBJ_ARMOUR || you.has_mutation(MUT_NO_ARMOUR))
     {
         if (verbose)
             mprf(MSGCH_PROMPT, "You can't wear that!");
@@ -1928,8 +1936,10 @@ static bool _can_takeoff_armour(int item);
 // precondition: item is not already worn
 static bool _can_equip_armour(const item_def &item)
 {
-    const object_class_type base_type = item.base_type;
-    if (base_type != OBJ_ARMOUR)
+    if (item.base_type == OBJ_WEAPONS /* XXX check mut here*/)
+        return true; // TODO check no 2h wielded, check can wear etc
+
+    if (item.base_type != OBJ_ARMOUR)
     {
         mprf(MSGCH_PROMPT, "You can't wear that.");
         return false;
@@ -2041,7 +2051,9 @@ static bool _can_takeoff_armour(int item)
 
     item_def& invitem = you.inv[item];
 
-    if (invitem.base_type != OBJ_ARMOUR)
+    if (invitem.base_type != OBJ_ARMOUR
+        && (!you.has_mutation(MUT_WIELD_OFFHAND)
+            || item_equip_slot(invitem) != EQ_SHIELD))
     {
         mprf(MSGCH_PROMPT, "You couldn't even remove that if you tried!");
         return false;

@@ -1,0 +1,45 @@
+enum: SP_AUGMENT
+monster: MONS_HUMAN
+name: Augment
+difficulty: Advanced
+difficulty_priority: 30
+aptitudes:
+  xp: 0
+  hp: 0
+  mp_mod: 0
+  mr: 3
+  short_blades: -1
+  long_blades: -1
+  axes: -1
+  maces_and_flails: 0
+  polearms: -1
+  staves: -1
+  ranged weapons: -1
+  throwing: -1
+  armour: -1
+  dodging: -1
+  shields: -3
+  unarmed_combat: -1
+  spellcasting: -1
+  necromancy: -1
+  translocations: -1
+  transmutations: -1
+  shapeshifting: -2
+  fire_magic: -1
+  ice_magic: -1
+  air_magic: -1
+  earth_magic: 0
+  invocations: 1
+str: 8
+int: 8
+dex: 8
+levelup_stat_frequency: 4
+mutations:
+  1:
+    MUT_WIELD_OFFHAND: 1
+recommended_jobs:
+  - JOB_BERSERKER
+  - JOB_CINDER_ACOLYTE
+  - JOB_CONJURER
+  - JOB_NECROMANCER
+  - JOB_ICE_ELEMENTALIST

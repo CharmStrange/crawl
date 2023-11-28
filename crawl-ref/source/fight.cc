@@ -770,7 +770,7 @@ bool wielded_weapon_check(const item_def *weapon, string attack_verb)
  * @return          True if the defender is an enemy of the defender; false
  *                  otherwise.
  */
-static bool _dont_harm(const actor &attacker, const actor &defender)
+bool dont_harm(const actor &attacker, const actor &defender)
 {
     if (mons_aligned(&attacker, &defender))
         return true;
@@ -881,7 +881,7 @@ void get_cleave_targets(const actor &attacker, const coord_def& def,
     {
         if (*di == def) continue; // no double jeopardy
         actor *target = actor_at(*di);
-        if (!target || _dont_harm(attacker, *target))
+        if (!target || dont_harm(attacker, *target))
             continue;
         if (di.radius() == 2 && !can_reach_attack_between(atk, *di, REACH_TWO))
             continue;
@@ -910,7 +910,7 @@ void attack_multiple_targets(actor &attacker, list<actor*> &targets,
     {
         actor* def = targets.front();
 
-        if (def && def->alive() && !_dont_harm(attacker, *def)
+        if (def && def->alive() && !dont_harm(attacker, *def)
             && (is_projected
                 || adjacent(attacker.pos(), def->pos())
                 || reaching))

@@ -500,6 +500,7 @@ string no_selectables_message(int item_selector)
     case OSEL_BLESSABLE_WEAPON:
         return "You aren't carrying any weapons that can be blessed.";
     case OBJ_ARMOUR:
+    case OSEL_WEARABLE: // ?
     {
         if (_has_melded_armour())
             return "Your armour is currently melded into you.";
@@ -1128,8 +1129,14 @@ bool item_is_selected(const item_def &i, int selector)
     case OBJ_ARMOUR:
         return itype == OBJ_ARMOUR && can_wear_armour(i, false, false);
 
+    case OSEL_WEARABLE:
+        return can_wear_armour(i, false, false);
+
     case OSEL_WORN_ARMOUR:
-        return itype == OBJ_ARMOUR && item_is_equipped(i);
+        return itype == OBJ_ARMOUR && item_is_equipped(i)
+               || you.has_mutation(MUT_WIELD_OFFHAND)
+                  && is_weapon(i)
+                  && item_equip_slot(i) == EQ_SHIELD;
 
     case OSEL_UNIDENT:
         return !fully_identified(i) && itype != OBJ_BOOKS;

@@ -46,6 +46,7 @@ stab_type find_stab_type(const actor *attacker,
 
 int stab_bonus_denom(stab_type stab);
 
+bool dont_harm(const actor &attacker, const actor &defender);
 bool force_player_cleave(coord_def target);
 bool attack_cleaves(const actor &attacker, int which_attack = -1);
 bool weapon_cleaves(const item_def &item);

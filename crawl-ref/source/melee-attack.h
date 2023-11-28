@@ -37,6 +37,7 @@ public:
     bool         cleaving;        // additional attack from cleaving
     bool         is_multihit;     // quick blade follow-up attack
     bool         is_riposte;      // fencers' retaliation attack
+    bool         is_off_hand;     // used by two-weapon players only
     bool         is_projected;    // projected weapon spell attack
     int          charge_pow;      // electric charge bonus damage
     wu_jian_attack_type wu_jian_attack;
@@ -157,6 +158,7 @@ private:
     bool bad_attempt();
     bool player_unrand_bad_attempt();
     void _defender_die();
+    void launch_offhand_attack(item_def &offhand);
 
     // Added in, were previously static methods of fight.cc
     bool _extra_aux_attack(unarmed_attack_type atk);

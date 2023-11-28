@@ -70,8 +70,8 @@ melee_attack::melee_attack(actor *attk, actor *defn,
     ::attack(attk, defn),
 
     attack_number(attack_num), effective_attack_number(effective_attack_num),
-    cleaving(is_cleaving), is_multihit(false),
-    is_riposte(false), is_projected(false), charge_pow(0),
+    cleaving(is_cleaving), is_multihit(false), is_riposte(false),
+    is_off_hand(false), is_projected(false), charge_pow(0),
     wu_jian_attack(WU_JIAN_ATTACK_NONE),
     wu_jian_number_of_targets(1)
 {
@@ -200,7 +200,11 @@ bool melee_attack::handle_phase_attempted()
         if (!is_riposte && !is_multihit && !cleaving
             && wu_jian_attack == WU_JIAN_ATTACK_NONE)
         {
-            you.time_taken = you.attack_delay().roll();
+            const int delay = you.attack_delay_with(nullptr, true, weapon).roll();
+            if (is_off_hand)
+                you.time_taken = max(you.time_taken, delay);
+            else
+                you.time_taken = delay;
         }
 
         const caction_type cact_typ = is_riposte ? CACT_RIPOSTE : CACT_MELEE;
@@ -686,7 +690,7 @@ bool melee_attack::handle_phase_damaged()
 bool melee_attack::handle_phase_aux()
 {
     if (attacker->is_player()
-        && !cleaving
+        && !cleaving && !is_off_hand
         && wu_jian_attack != WU_JIAN_ATTACK_TRIGGERED_AUX
         && !is_projected)
     {
@@ -846,6 +850,35 @@ static void _handle_spectral_brand(actor &attacker, const actor &defender)
     spectral_weapon_fineff::schedule(attacker, defender);
 }
 
+void melee_attack::launch_offhand_attack(item_def &offhand)
+{
+    if (!defender
+        || !defender->alive()
+        || !attacker->alive()
+        || dont_harm(*attacker, *defender))
+    {
+        return;
+    }
+
+    const bool reaching = weapon_reach(offhand) > REACH_NONE;
+    if (!is_projected
+        && !reaching
+        && !adjacent(attacker->pos(), defender->pos()))
+    {
+        return;
+    }
+
+    melee_attack attck(attacker, defender, attack_number,
+                       ++effective_attack_number, false);
+
+    attck.wu_jian_attack = wu_jian_attack;
+    attck.is_projected = is_projected;
+    attck.is_off_hand = true;
+    attck.weapon = &offhand;
+    attck.init_attack(SK_UNARMED_COMBAT, attack_number /*hm*/);
+    attck.attack();
+}
+
 bool melee_attack::handle_phase_end()
 {
     if (!is_multihit && weapon_multihits(weapon))
@@ -872,6 +905,13 @@ bool melee_attack::handle_phase_end()
         attack_multiple_targets(*attacker, cleave_targets, attack_number,
                               effective_attack_number, wu_jian_attack,
                               is_projected, true);
+    }
+
+    if (!is_multihit && !cleaving && !is_off_hand)
+    {
+        item_def *offhand = attacker->offhand_weapon();
+        if (offhand && !is_range_weapon(*offhand))
+            launch_offhand_attack(*offhand);
     }
 
     // Check for passive mutation effects.

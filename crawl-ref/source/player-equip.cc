@@ -190,6 +190,8 @@ static void _assert_valid_slot(equipment_type eq, equipment_type slot)
 #ifdef ASSERTS
     if (eq == slot)
         return;
+    if (eq == EQ_WEAPON && slot == EQ_SHIELD) // hack for off-hand wielding
+        return;
     ASSERT(eq == EQ_RINGS); // all other slots are unique
     equipment_type r1 = EQ_LEFT_RING, r2 = EQ_RIGHT_RING;
     if (species::arm_count(you.species) > 2)
