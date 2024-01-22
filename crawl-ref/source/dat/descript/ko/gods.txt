@@ -122,11 +122,7 @@ Okawaru
 %%%%
 Pakellas
 
-Pakellas the Inventive believes in the supremacy of devices, magical or
-otherwise, over spells and other forms of magic. Followers, although cut off
-from ambient magical power, are provided with magical energy to empower their
-devices so long as they use them to assert Pakellas' supremacy. Pakellas will
-grant devout worshippers access to increasingly powerful devices.
+발명가 파케랄스는 마법과 주문, 그리고 그들을 다룰 수 있게 하는 장치의 힘을 믿는다. 비록 그의 추종자들 주위에 마력이 없다고 해도, 추종자는 파케랄스의 강력한 장치와 함께라면 강해질 수 있는 마법 에너지를 손에 넣을 수 있다. 파케랄스는 그의 독실한 신자들에게 강력한 장치에 접근할 수 있도록 할 것이다.
 %%%%
 Qazlal
 
@@ -361,14 +357,7 @@ Okawaru powers
 %%%%
 Pakellas powers
 
-Followers of Pakellas do not regenerate their magic power naturally, and are
-forbidden from using external means to do so; instead, they are granted
-magical energy on killing beings. They may use increasing amounts of magical
-energy to strengthen their devices, temporarily granting them additional
-power, and can also use their magical energy to recharge their devices.
-Sufficiently devout followers will receive new devices from Pakellas, and may
-eventually petition Pakellas to personally charge one of their devices beyond
-its normal limits.
+파켈라스의 추종자들은 그들의 마법 에너지를 자연적으로 재생시키지 않으며, 다른 수단을 통해 그렇게 하는 것도 금기시된다. 대신, 파켈라스의 추종자들은 생명을 빼앗아 마법 에너지를 얻을 수 있도록 허락된다. 파켈라스의 추종자들은 그렇게 얻은 마법 에너지로 장치를 강력하게 하고, 일시적으로 추가적인 힘을 얻으며, 장치를 재충전시킨다. 아주 독실한 파켈라스의 추종자들은 파켈라스로부터 새로운 장치를 수여받을 것이며, 나아가 파켈라스에게 장치의 최대 에너지를 뛰어 넘는, 강력하게 재충전된 장치를 청할 수 있다.
 %%%%
 Qazlal powers
 
@@ -403,14 +392,14 @@ Sif Muna powers
 %%%%
 the Shining One powers
 
-샤이닝 원의 추종자들은 적들을 드러내는 휘광에 감싸여진다.
-추종자들은 사악한 존재를 살해함에 따라 힘을 얻게 되며, 신앙심이 깊어짐에
+샤이닝 원의 추종자들은 적들을 드러내는 휘광에 감싸진다.
+추종자들은 사악한 존재를 사살함으로써 힘을 얻게 되며, 신앙심이 깊어짐에
 따라 그들의 생명이 보호받을 수 있게 된다. 샤이닝 원은 소환되거나 매혹된 아군이
 오래 남아 성전에서 가치를 증명할 수 있게 할 것이다. 추종자들은 전투에서 그들을
 보호하는 신성한 방패를 사용할 수 있게 된다. 종래에는, 추종자들은 불경한 존재들에
-특히 피해를 주는 정화의 화염을 뿜어낼 수 있게 되며, 또한 강력한 신성한 존재들을
-일시적으로 동료로서 불러낼 수 있다. 특히 신심 깊은 추종자들은 샤이닝 원에게
-무기를 축복해달라 청원할 수 있다. 샤이닝 원은 종종 직접 개입하여 추종자들의
+강력한 피해를 주는 정화의 화염을 뿜어낼 수 있게 되며, 또한 강력한 신성한 존재들을
+일시적으로 동료로서 불러낼 수 있다. 특히 신앙심 깊은 추종자들은 샤이닝 원에게
+무기를 축복해달라고 청할 수 있다. 샤이닝 원은 종종 직접 개입하여 추종자들의
 생명을 보호할 것이다.
 
 %%%%
@@ -500,11 +489,11 @@ Cheibriados wrath
 %%%%
 Dithmenos wrath
 
-분노에 찼을 때, 디스메노스는 그림자들을 희생자들로부터 등지게 합니다.
-어둠으로부터 괴물들이 나타나고, 그림자로부터 짜여진 환영과 그림자 그 자체 모두가
-죄인들을 맞섭니다. 디스메노스의 미묘한 징벌은 말하자면 무엇보다 위험합니다.
+분노에 찼을 때, 디스메노스는 희생자들로 하여금 그들의 그림자를 볼 수 없도록 한다.
+어둠으로부터 괴물들이 나타나고, 그림자로 만들어진 환영과 그림자 그 자체가
+죄인들을 맞선다. 디스메노스의 미묘한 징벌은 말하자면 무엇보다 위험하다.
 희생자들은 그림자들이 없어져 숨을 곳 없이 사냥당하거나,
-그림자로 뒤덮여 아마도 영원히 잠든 자신을 발견하게 될 것입니다.
+그림자로 뒤덮여 아마도 영원히 잠든 자신을 발견하게 될 것이다.
 %%%%
 Elyvilon wrath
 
